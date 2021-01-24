@@ -8,3 +8,6 @@
 ```
 cp section1.py /home/airflow/airflow/dags/scripts/
 ```
+
+## How it works
+After airflow job is enabled, the job will read the input file at 1am everyday and process it. A result file will be written once completion.
