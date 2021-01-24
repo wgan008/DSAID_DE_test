@@ -25,11 +25,15 @@ output_path = args.o
 df = pd.read_csv(input_path)
 print("Raw count is: ",df.count())
 
+# remove null or empty name
 df = df[(pd.notnull(df["name"])) | (df["name"]!='')]
 
+# split name into first and last names
 df['first_name'], df['last_name'] = df['name'].str.split(' ', 1).str
 
-df["aboce_100"] = df["price"] > 100
+# mark price > 100
+df["above_100"] = df["price"] > 100
 
+# create result file with date in name
 filename = date.today().strftime('%Y%m%d') + "_res.csv"
 df.to_csv(output_path + filename)
